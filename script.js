@@ -25,7 +25,6 @@ btnRoll.addEventListener("click", () => {
     if (game_over) {
         // o'yin tugamaguncha ishlaydi
         const random_num = Math.floor(Math.random() * 6) + 1;
-        console.log(random_num);
 
         findPoint_and_EqualizeTransform(random_num);
 
@@ -34,7 +33,6 @@ btnRoll.addEventListener("click", () => {
         cub.style.animationName = "cubanimation";
 
         addAnimation(random_num);
-        console.log(random_num);
 
         game_over = false;
 
@@ -83,6 +81,8 @@ btnHold.addEventListener("click", () => {
             currenScore_Text_1.textContent = "0";
             next_player = false;
 
+            console.log("btn hold curent buffer", curent_score_buffer_1);
+
             toogleClassActive();
         } else {
             score_player2_buffer += curent_score_buffer_1;
@@ -111,7 +111,6 @@ btnHold.addEventListener("click", () => {
 // new game btn
 btn_new_game.addEventListener("click", () => {
     game_over = true;
-    console.log("reset game");
     restartGame();
 });
 
@@ -134,13 +133,15 @@ function restartGame() {
     curent_score_buffer_1 = 0;
     currenScore_Text_2.textContent = curent_score_buffer_1;
 
-    score_player2_buffer = 0;
-    score_player1_text.textContent = score_player2_buffer;
+    score_player1_buffer = 0;
+    score_player1_text.textContent = score_player1_buffer;
 
     curent_score_buffer_1 = 0;
     currenScore_Text_1.textContent = curent_score_buffer_1;
 
     next_player = true;
+    console.log("score buffer", score_player2_buffer);
+    console.log("curent buffer", curent_score_buffer_1);
 
     player_section_1.classList.add("player--active");
     player_section_2.classList.remove("player--active");
